@@ -17,11 +17,11 @@ variable "hostname" {
   default     = "local-linux-vm"
 }
 
-variable "vm_labels" {
-  description = "Optional labels to add to the container"
-  type        = map(string)
-  default     = {
-    environment = "dev"
-    project     = "local-linux-vm"
-  }
-}
+# variable "vm_labels" {
+#   description = "Optional labels to add to the container"
+#   type        = map(string)
+#   default     = {
+#     environment = "dev"
+#     project     = "local-linux-vm"
+#   }
+# }
