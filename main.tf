@@ -14,18 +14,18 @@ locals {
 # Docker resources
 ############################################################
 
-resource "docker_image" "ubuntu" {
+resource "docker_image" "linux_vm_custom" {
   name = var.image
 }
 
 resource "docker_container" "linux_vm" {
   name  = var.container_name
-  image = docker_image.ubuntu.latest
+  image = docker_image.linux_vm_custom.image_id
 
   # Keep the container running
   tty        = true
   stdin_open = true
-  command    = ["bash", "-c", "sleep infinity"]
+  #command    = ["bash", "-c", "sleep infinity"]
 
   # Example: pass cloud-init config as an environment variable (placeholder)
   env = [
@@ -33,10 +33,10 @@ resource "docker_container" "linux_vm" {
   ]
 
   # Optional: add labels for easier identification
-  labels = [
-    for k, v in var.vm_labels : {
-      label = k
-      value = v
-    }
-  ]
+  # labels = [
+  #   for k, v in var.vm_labels : {
+  #     label = k
+  #     value = v
+  #   }
+  # ]
 }
